@@ -7,9 +7,9 @@
 int main(void)
 {
 char a;
-for (a = 97; a <= 122; a++)
+for (a = 'a'; a <= 'z'; a++)
 {
-if (a == 65 || a == 90)
+if (a == 'q' || a == 'e')
 {
 continue;
 }
