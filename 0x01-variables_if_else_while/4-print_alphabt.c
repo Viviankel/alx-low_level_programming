@@ -13,7 +13,8 @@ if (a == 65 || a == 90)
 {
 continue;
 }
-}
 putchar (a);
+}
+putchar ('\n');
 return (0);
 }
