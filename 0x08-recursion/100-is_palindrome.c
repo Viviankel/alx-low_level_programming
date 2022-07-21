@@ -1,48 +1,56 @@
 #include "main.h"
 
-/**
- * * check - Checker for the palindrome
- * * @s: String
- *  * @start: int moves from right to left
- *  * @end: int move from left to right
- *   * @pair: int
- *
- *   **/
-
-int check(char *s, int start, int end, int pair)
-{
-	if ((start == end && pair != 0) || (start == end + 1 && pair == 0))
-		return (1);
-	else if (s[start] != s[end])
-		return (0);
-	else
-		return (check(s, start + 1, end - 1, pair));
-}
+int is_palindrome(char *s);
+int palindrome(char *s, int first, int last);
+int _strlen_recursion(char *s);
 
 /**
- * * last_index - Returns the last index of a string (counts the null char)
- *  * @s: Pointer the string
- *   * Return: int
- *    **/
-
-int last_index(char *s)
-{
-	int n = 0;
-
-	if (*s > '\0')
-		n += last_index(s + 1) + 1;
-	return (n);
-}
-
-/**
- * * is_palindrome - Check if a string is a palindrome
- * * @s: String to check
- * * Return: 0 or 1
+ * * is_palindrome - string is a palindrome
+ * * @s: int type
+ * * Return: char type
  * **/
-
 int is_palindrome(char *s)
 {
-	int end = last_index(s)
-		;
-	return (check(s, 0, end - 1, end % 2));
+	int first, last;
+
+	first = 0;
+	last = _strlen_recursion(s) - 1;
+
+	return (palindrome(s, first, last));
+}
+/**
+ * * palindrome - palindrome
+ * * @s: char type
+ * * @first: int type
+ * * @last: int type
+ * * Return: recursion
+ * **/
+int palindrome(char *s, int first, int last)
+{
+	if (first > last)
+	{
+		return (1);
+	}
+	else if (s[first] == s[last])
+	{
+		return (palindrome(s, first + 1, last - 1));
+	}
+	else
+	{
+		return (0);
+	}
+
+}
+/**
+ * * _strlen_recursion - _strlen_recursion
+ * * @s: char type
+ *  * Return: function that returns the length of string
+ *  **/
+int _strlen_recursion(char *s)
+{
+	if (*s != '\0')
+	{
+		return (1 + _strlen_recursion(s + 1));
+	}
+	return (0);
 }
